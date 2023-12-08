@@ -1,1 +1,35 @@
+Model Architecture:
+
+The proposed neural network architecture for image classification is a Convolutional Neural Network (CNN). The architecture consists of the following layers:
+
+Convolutional Layer (Conv2D): 32 filters of size (3, 3), using the ReLU activation function.
+Max Pooling Layer (MaxPooling2D): Pooling with a window size of (2, 2).
+Flatten Layer: To convert the 2D feature maps to a vector for the fully connected layers.
+Dense Layer (Fully Connected): 256 neurons with the ReLU activation function.
+Dropout Layer: Dropout with a rate of 0.5 to prevent overfitting.
+Dense Layer (Fully Connected): 512 neurons with the ReLU activation function.
+Dense Layer (Output Layer): 5 neurons with the softmax activation function for multi-class classification.
+
+
+Training and Validation Pipeline:
+
+Data Loading: Images are loaded from the specified directory, resized to (128, 128) pixels, and stored in a dataset along with corresponding labels.
+Train-Test Split: The dataset is split into training and testing sets using a train-test split ratio of 80:20.
+Data Normalization: The pixel values of the images are normalized using 'tf.keras.utils.normalize'.
+Model Compilation: The model is compiled using the Adam optimizer and sparse categorical crossentropy loss for multi-class classification.
+Training: The model is trained for 20 epochs with a batch size of 128 and a validation split of 10%. Training progress is monitored and stored in the 'history' variable.
+Evaluation: The model is evaluated on the test set, and accuracy along with a classification report is printed.
+
+Evaluation Metrics:
+
+Accuracy: The percentage of correctly classified instances on the test set.
+Classification Report: Provides precision, recall, and F1-score for each class, as well as macro and weighted averages.
+
+Documentation:
+
+Model Summary: The model architecture is summarized using 'model.summary()'.
+Training Results: The training process shows reasonable accuracy on the test set (73.53%). The classification report provides insights into the model's performance for each class.
+Findings: The model displays varying performance across different classes. It excels in Class 1 (Maria) , with perfect precision (100%) and capturing most instances (Recall: 86%, F1-Score: 92%). Class 0 (Messi) is identified well, but half of the instances are missed (Precision: 83%, Recall: 50%, F1-Score: 62%). Class 2 (Roger) shows reasonably good identification (Precision: 75%, Recall: 75%, F1-Score: 75%). Class 3 (Serena) has a moderate performance (Precision: 67%, Recall: 67%, F1-Score: 67%), while Class 4 (Virat) , despite lower precision (58%), captures all instances (Recall: 100%, F1-Score: 74%).
+
+The model seems to perform well, especially for classes like Maria Sharapova and Roger Federer. However, there is room for improvement for classes like Lionel Messi and Serena Williams, Virat Kohli as indicated by lower precision, recall, and F1-scores.
 
